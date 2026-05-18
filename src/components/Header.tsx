@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -87,6 +88,7 @@ const Header = () => {
 
           {/* CTA */}
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <Button
               className="btn-primary"
               onClick={() => handleSmoothScroll('#contact')}
@@ -96,17 +98,19 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <Button
             variant="ghost"
             size="sm"
-            className="md:hidden"
             onClick={() => setIsMobileMenuOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </Button>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
