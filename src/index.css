@@ -136,6 +136,35 @@
     background: var(--gradient-dark);
     overflow-x: hidden;
   }
+
+  /* Mastercard-inspired light theme refinements */
+  :root:not(.dark) body {
+    background: hsl(var(--background));
+    font-weight: 450;
+    letter-spacing: 0;
+  }
+
+  :root:not(.dark) h1,
+  :root:not(.dark) h2,
+  :root:not(.dark) h3,
+  :root:not(.dark) h4 {
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  /* Eyebrow label utility */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.04em];
+    color: hsl(var(--muted-foreground));
+  }
+  .eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: hsl(var(--primary-glow));
+    display: inline-block;
+  }
 }
 
 /* Clean Components & Utilities */
