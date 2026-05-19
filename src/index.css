@@ -133,21 +133,11 @@
 
   body {
     @apply bg-background text-foreground font-inter;
-    background: var(--gradient-dark);
     overflow-x: hidden;
-  }
-
-  /* Mastercard-inspired light theme refinements */
-  :root:not(.dark) body {
-    background: hsl(var(--background));
     font-weight: 450;
-    letter-spacing: 0;
   }
 
-  :root:not(.dark) h1,
-  :root:not(.dark) h2,
-  :root:not(.dark) h3,
-  :root:not(.dark) h4 {
+  h1, h2, h3, h4 {
     letter-spacing: -0.02em;
     font-weight: 500;
   }
