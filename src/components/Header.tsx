@@ -75,7 +75,7 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium hover:neon-glow"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium text-sm"
                 onClick={(e) => {
                   e.preventDefault();
                   handleSmoothScroll(item.href);
@@ -90,7 +90,7 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
             <Button
-              className="btn-primary"
+              className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-5 h-10 text-sm font-medium shadow-none"
               onClick={() => handleSmoothScroll('#contact')}
             >
               Let&apos;s Talk
@@ -135,7 +135,7 @@ const Header = () => {
                 </a>
               ))}
               <Button
-                className="btn-primary mt-2"
+                className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-5 h-10 text-sm font-medium shadow-none mt-2"
                 onClick={() => {
                   handleSmoothScroll('#contact');
                   setIsMobileMenuOpen(false);
