@@ -1,10 +1,15 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Sparkles } from 'lucide-react';
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const skillTags = [
+    'Python', 'SQL', 'PySpark', 'FastAPI', 'LangGraph',
+    'Databricks', 'AWS', 'Azure', 'Power BI', 'Snowflake',
+  ];
 
   return (
     <section
@@ -25,16 +30,16 @@ const Hero = () => {
                 Swayam Patel
               </h1>
               <p className="text-xl md:text-2xl text-foreground/80 font-medium">
-                Data Scientist
-                <span className="text-primary"> · </span>
-                <span className="text-muted-foreground">AI &amp; Machine Learning Enthusiast</span>
+                Data &amp; AI Consultant
               </p>
             </div>
 
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              I turn complex data into clear, useful decisions — building with Python, R,
-              SQL and cloud tools across NLP, computer vision, and predictive analytics.
-              Always learning, always shipping.
+              I&apos;m a Data &amp; AI professional based in Australia with experience across
+              data engineering, analytics, machine learning, and AI-driven solutions. I work
+              with Python, SQL, Spark, FastAPI, LangGraph, cloud platforms, and modern data
+              tools to build reliable pipelines, intelligent workflows, dashboards, and
+              practical AI systems.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -48,7 +53,7 @@ const Hero = () => {
               <Button
                 variant="outline"
                 onClick={() => scrollToSection('projects')}
-                className="rounded-full border-foreground/20 hover:border-foreground hover:bg-transparent text-foreground px-7 h-12 text-base font-medium"
+                className="rounded-full border-foreground/30 hover:border-foreground hover:bg-transparent text-foreground bg-transparent px-7 h-12 text-base font-medium"
               >
                 View Projects
               </Button>
@@ -81,48 +86,61 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: editorial visual */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-            <div className="relative w-[280px] h-[280px] md:w-[360px] md:h-[360px] lg:w-[420px] lg:h-[420px]">
-              {/* Soft circle backdrop */}
-              <div className="absolute inset-0 rounded-full bg-card border border-border" />
-              {/* Inner accent ring */}
-              <div className="absolute inset-6 rounded-full border border-primary/20" />
-              {/* Initials medallion */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tight text-foreground">
-                    SP
+          {/* Right: abstract editorial visual */}
+          <div className="lg:col-span-5 relative hidden lg:flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[460px]">
+              {/* Soft circular accent behind */}
+              <div className="absolute -top-10 -right-10 w-56 h-56 rounded-full bg-card border border-border" />
+              <div className="absolute -bottom-12 -left-6 w-32 h-32 rounded-full border border-primary/30" />
+
+              {/* Main raised card: toolkit */}
+              <div className="relative rounded-[28px] bg-card border border-border p-7 shadow-sm">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="eyebrow !mb-0">Toolkit</span>
+                  <Sparkles className="w-4 h-4 text-primary" />
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {skillTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1.5 rounded-full text-xs font-medium bg-background border border-border text-foreground/80"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Mini workflow visual */}
+                <div className="rounded-2xl bg-background border border-border p-4">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    AI Workflow
                   </div>
-                  <div className="mt-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                    Swayam Patel
+                  <div className="flex items-center justify-between gap-2">
+                    {['Data', 'Model', 'Agent', 'API'].map((step, i) => (
+                      <div key={step} className="flex items-center flex-1">
+                        <div className="flex-1 text-center">
+                          <div className="w-9 h-9 mx-auto rounded-full bg-foreground text-background flex items-center justify-center text-xs font-semibold">
+                            {i + 1}
+                          </div>
+                          <div className="mt-2 text-[11px] font-medium text-foreground/80">
+                            {step}
+                          </div>
+                        </div>
+                        {i < 3 && (
+                          <div className="w-4 h-px bg-primary/60 mx-1" />
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-              {/* Satellite CTA */}
-              <button
-                onClick={() => scrollToSection('about')}
-                aria-label="Learn more about me"
-                className="absolute bottom-2 right-2 md:bottom-4 md:right-4 w-14 h-14 rounded-full bg-foreground text-background flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              {/* Thin orange orbital arc */}
-              <svg
-                className="absolute -inset-8 w-[calc(100%+4rem)] h-[calc(100%+4rem)] pointer-events-none"
-                viewBox="0 0 100 100"
-                fill="none"
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="48"
-                  stroke="hsl(var(--primary-glow))"
-                  strokeWidth="0.4"
-                  strokeDasharray="2 3"
-                  opacity="0.5"
-                />
-              </svg>
+
+              {/* Small floating stat card */}
+              <div className="absolute -bottom-6 -right-2 rounded-2xl bg-foreground text-background px-4 py-3 shadow-lg">
+                <div className="text-[10px] uppercase tracking-[0.2em] opacity-70">Now</div>
+                <div className="text-sm font-semibold">Kantheri Consulting</div>
+              </div>
             </div>
           </div>
         </div>
